@@ -54,12 +54,13 @@ export default Home = ({ navigation }) => {
       url: objetoimagen.url,
       desc: objetoimagen.explanation,
       date: objetoimagen.date,
+      mediaType: objetoimagen.media_type,
     });
   };
 
   return (
     <Layout>
-      <Header texto="Descubre" />
+      <Header texto="APOD" />
       {isLoading ? ( // Mostrar el loader mientras se carga
         <ActivityIndicator
           style={{
@@ -78,12 +79,13 @@ export default Home = ({ navigation }) => {
           <Textwhite texto="Imagenes de los ultimos 7 dias" />
           <FlatList
             style={{ marginVertical: 5 }}
-            data={imagenesDias}
+            data={[...imagenesDias].reverse()}
             renderItem={({ item }) => (
               <ImagenesDiasView
                 title={item.title}
                 date={item.date}
                 url={item.url}
+                mediaType={item.media_type}
                 onPres={() => handleDetalles(item)}
               />
             )}

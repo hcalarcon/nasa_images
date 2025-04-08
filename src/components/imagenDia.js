@@ -1,18 +1,18 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import Link from "./link";
+import ImageView from "./imageView";
 
 export default Card = ({ Data, onPres }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.texto}>{Data.title}</Text>
-      <Image style={styles.img} source={{ uri: Data.url }} />
+      <ImageView
+        url={Data.url}
+        mediaType={Data.media_type}
+        style={styles.img}
+      />
       <Text style={styles.texto}>{Data.date}</Text>
       <Link texto="Detalles" onPres={onPres} />
-      {/* <TouchableOpacity onPress={onPres}>
-        <Text style={{ color: "white", alignSelf: "flex-end", padding: 5 }}>
-          Detalles
-        </Text>
-      </TouchableOpacity> */}
     </View>
   );
 };
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   img: {
     alignSelf: "center",
-    width: 270,
+    width: 300,
     height: 200,
     borderRadius: 10,
   },

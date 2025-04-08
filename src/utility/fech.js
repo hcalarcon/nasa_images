@@ -7,6 +7,7 @@ export default Fech = async (parametros) => {
       `${api}?api_key=${key}${parametros.length > 0 ? parametros : ""}`
     );
     const Data = await response.json();
+    console.log(Data);
     return Data;
   } catch (er) {
     console.log(er);
